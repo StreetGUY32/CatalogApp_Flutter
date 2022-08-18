@@ -48,10 +48,10 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CatalogueHeader(),
+                CatalogHeader(),
                 if (CatalogModel.items != null &&
                     CatalogModel.items!.isNotEmpty)
-                  CatalogueList().expand()
+                  CatalogList().expand()
                 else
                   Center(
                     child: CircularProgressIndicator(),
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class CatalogueHeader extends StatelessWidget {
+class CatalogHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -77,43 +77,43 @@ class CatalogueHeader extends StatelessWidget {
   }
 }
 
-class CatalogueList extends StatelessWidget {
+class CatalogList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: CatalogModel.items?.length,
       itemBuilder: (context, index) {
-        final catalogue = CatalogModel.items![index];
-        return CatalogueItem(catalogue: catalogue);
+        final catalog = CatalogModel.items![index];
+        return CatalogItem(catalog: catalog);
       },
     );
   }
 }
 
-class CatalogueItem extends StatelessWidget {
-  final Item catalogue;
-  const CatalogueItem({Key? key, required this.catalogue}) : super(key: key);
+class CatalogItem extends StatelessWidget {
+  final Item catalog;
+  const CatalogItem({Key? key, required this.catalog}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return VxBox(
       child: Row(
         children: [
-          CatalogueImage(image: catalogue.image),
+          CatalogImage(image: catalog.image),
           Expanded(
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              catalogue.name.text.lg.color(MyTheme.darkBluishColor).bold.make(),
-              catalogue.desc.text.textStyle(context.captionStyle!).make(),
+              catalog.name.text.lg.color(MyTheme.darkBluishColor).bold.make(),
+              catalog.desc.text.textStyle(context.captionStyle!).make(),
               10.heightBox,
               ButtonBar(
                 alignment: MainAxisAlignment.spaceBetween,
                 buttonPadding: EdgeInsets.zero,
                 children: [
-                  "\$${catalogue.price}".text.bold.xl.make(),
+                  "\$${catalog.price}".text.bold.xl.make(),
                   ElevatedButton(
                       onPressed: () {},
                       style: ButtonStyle(
@@ -132,10 +132,10 @@ class CatalogueItem extends StatelessWidget {
   }
 }
 
-class CatalogueImage extends StatelessWidget {
+class CatalogImage extends StatelessWidget {
   final String image;
 
-  const CatalogueImage({Key? key, required this.image}) : super(key: key);
+  const CatalogImage({Key? key, required this.image}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
